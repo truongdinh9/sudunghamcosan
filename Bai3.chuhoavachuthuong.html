@@ -5,15 +5,22 @@
     <title>Title</title>
 </head>
 <body>
+Nhập một đoạn chữ :
 <input type="text" placeholder="nhap chu" id="ooo">
+<br/>
 <button onclick="thanhchuhoa()">THÀNH CHỮ HOA</button>
 <button onclick="thanhchuthuong()">thành chữ thường</button>
 <button onclick="doihet()">Đổi->đỔI</button>
+<button onclick="reverse()">Chữ ngược</button>
+<hr>
+Kết quả:
 <input type="text" placeholder="ketqua" id="kq">
 <script>
     let UP = "QWERTYUIOPASDFGHJKLZXCVBNM";
     let dow = "qwertyuiopasdfghjklzxcvbnm";
+    let nguoc = "bʍǝɹʇʎnıodɐspɟƃɥɾʞlzxɔʌquɯ";
     let z = [];
+    let m=[];
 
     function thanhchuhoa() {
         let n = ooo.value;
@@ -26,6 +33,7 @@
             }
         }
         kq.value = z.join("");
+        z=[];
 
     }
 
@@ -41,7 +49,7 @@
             }
         }
         kq.value = z.join("");
-
+        z=[];
     }
 
     function doihet() {
@@ -50,12 +58,37 @@
             if (UP.indexOf(n[i]) != -1) {
                 let a = UP.indexOf(n[i]);
                 z[i] = dow[a]
-            } else if(dow.indexOf(n[i]) != -1){
+            } else if (dow.indexOf(n[i]) != -1) {
                 let b = dow.indexOf(n[i]);
                 z[i] = UP[b]
-            } else {z[i]=n[i]};
+            } else {
+                z[i] = n[i]
+            }
+
         }
         kq.value = z.join("");
+        z=[];
+    }
+
+    function reverse() {
+        let n = ooo.value;
+        for (let i = 0; i < n.length; i++) {
+            if (dow.indexOf(n[i]) !== -1) {
+                let a = dow.indexOf(n[i]);
+                z[i] = nguoc[a];
+            } else {
+                if (UP.indexOf(n[i]) != -1) {
+                    let b = UP.indexOf(n[i]);
+                    z[i] = nguoc[b];
+                } else {
+                    z[i] = n[i]
+                }
+            }
+        }
+        for (let i=z.length-1;i>=0;i--){m.push(z[i])}
+        kq.value = m.join("");
+        m=[];
+        z=[];
     }
 
 </script>
