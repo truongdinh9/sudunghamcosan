@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="nhap chu" id="ooo">
+<button onclick="thanhchuhoa()">THÀNH CHỮ HOA</button>
+<button onclick="thanhchuthuong()">thành chữ thường</button>
+<button onclick="doihet()">Đổi->đỔI</button>
+<input type="text" placeholder="ketqua" id="kq">
+<script>
+    let UP = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    let dow = "qwertyuiopasdfghjklzxcvbnm";
+    let z = [];
+
+    function thanhchuhoa() {
+        let n = ooo.value;
+        for (let i = 0; i < n.length; i++) {
+            if (dow.indexOf(n[i]) != -1) {
+                let a = dow.indexOf(n[i]);
+                z[i] = UP[a]
+            } else {
+                z[i] = n[i]
+            }
+        }
+        kq.value = z.join("");
+
+    }
+
+
+    function thanhchuthuong() {
+        let n = ooo.value;
+        for (let i = 0; i < n.length; i++) {
+            if (UP.indexOf(n[i]) != -1) {
+                let a = UP.indexOf(n[i]);
+                z[i] = dow[a]
+            } else {
+                z[i] = n[i]
+            }
+        }
+        kq.value = z.join("");
+
+    }
+
+    function doihet() {
+        let n = ooo.value;
+        for (let i = 0; i < n.length; i++) {
+            if (UP.indexOf(n[i]) != -1) {
+                let a = UP.indexOf(n[i]);
+                z[i] = dow[a]
+            } else if(dow.indexOf(n[i]) != -1){
+                let b = dow.indexOf(n[i]);
+                z[i] = UP[b]
+            } else {z[i]=n[i]};
+        }
+        kq.value = z.join("");
+    }
+
+</script>
+</body>
+</html>
